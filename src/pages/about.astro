@@ -8,7 +8,11 @@ const identity = {
   occupation: "Freelance Web Developer",
   hobbies: ["coding", "pivo(už ne) ", "gaming"],
 };
-const skills = ["HTML", "CSS", "–>SASS", "JavaScript", "WordPress"];
+const skills = ["HTML", "CSS", "SASS", "JavaScript", "WordPress"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 
 <html lang="en">
@@ -24,14 +28,25 @@ const skills = ["HTML", "CSS", "–>SASS", "JavaScript", "WordPress"];
     <h1>{pageTitle}</h1>
     <h2>... and my new Astro site!</h2>
 
-    <p>
-      I am working through Astro's introductory tutorial. This is the second
-      page on my website, and it's the first one I built myself!
-    </p>
-
-    <p>
-      This site will update as I complete more of the tutorial, so keep checking
-      back and see how my journey is going!
-    </p>
+    <p>Fakty o mně:3</p>
+    <ul>
+      <li>Jmenuji se {identity.name} :3</li>
+      <li>žiju v {identity.city} :3</li>
+      {
+        identity.hobbies.length >= 2 && (
+          <li>
+            Zájmy :3 {identity.hobbies[0]} a {identity.hobbies[1]} a{" "}
+            {identity.hobbies[2]}
+          </li>
+        )
+      }
+    </ul>
+    <p>Umím:3</p>
+    <ul>
+      {skills.map((skill) => <li>{skill}</li>)}
+    </ul>
+    {happy && <p>I am happy to be learning Astro</p>}
+    {finished && <p>I finished this tutorial</p>}
+    {goal === 3 ? <p>My goal is to finish in 3 days</p> : <p>My goal is not 3 days.</p>}
   </body>
 </html>
